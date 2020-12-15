@@ -14,9 +14,6 @@ usd_rate.curs.plot()
 
 brent_oil.oil_price.plot()
 
-brent_oil.date
-
-usd_rate.data
 
 df = usd_rate.set_index('data').join(brent_oil.set_index('date')) #объединяем таблицы по дате
 
@@ -42,8 +39,6 @@ df['usd_mean_week'] = df['curs'].shift(1).rolling(window = 7).median() # шиф�
 df['oil_mean_week'] = df['oil_price'].shift(1).rolling(window = 7).median()
 
 final_df = pd.get_dummies(df, columns=['year', 'month', 'day']).drop(['data','oil_price'], axis=1)[7:]
-
-final_df.shape
 
 X = final_df.drop('curs', axis=1) # данные на основе которых делаем прогноз
 y = final_df.curs # то, что мы хотим спрогнозировать
