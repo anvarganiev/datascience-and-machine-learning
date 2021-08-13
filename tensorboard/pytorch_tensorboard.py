@@ -52,8 +52,8 @@ num_epochs = 1
 # Load Data
 train_dataset = datasets.MNIST(root='dataset/', train=True, transform=transforms.ToTensor(), download=True)
 
-batch_sizes = [256]
-learning_rates = [0.001]
+batch_sizes = [2, 64, 256]
+learning_rates = [0.1, 0.01, 0.001]
 classes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 for batch_size in batch_sizes:
