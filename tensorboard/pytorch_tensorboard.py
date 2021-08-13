@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 from torch.utils.tensorboard import SummaryWriter  # to print to tensorboard
+from tqdm import tqdm
 
 # костыль для write.add_embedding()
 import tensorflow as tf
@@ -81,7 +82,7 @@ for batch_size in batch_sizes:
             losses = []
             accuracies = []
 
-            for batch_idx, (data, targets) in enumerate(train_loader):
+            for batch_idx, (data, targets) in enumerate(tqdm(train_loader)):
                 # get data to GPU if possible
                 data = data.to(device)
                 targets = targets.to(device)
