@@ -6,12 +6,19 @@
 На выходе получается исходная картинка в стиле второй картинки.
 
 Пример: исходное изображение.
+
 ![](data/images/neural_style/kamilya.jpeg)
+
 Изображение стиля:
+
 ![](data/images/neural_style/van_gog.jpg)
+
 Выходное:
+
 ![](data/images/neural_style/output.png)
+
 Выходное, если картинка стиля "Крик" Мунка:
+
 ![](data/images/neural_style/output_2.png)
 
 # Как запускать
