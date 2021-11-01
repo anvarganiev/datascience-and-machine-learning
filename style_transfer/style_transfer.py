@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 
 import torchvision.transforms as transforms
 import torchvision.models as models
-
+import numpy as np
+from torchvision.utils import save_image
 from losses import run_style_transfer
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -27,9 +28,9 @@ def image_loader(image_name):
 
 
 style_img = image_loader(
-    "/Users/ganievanvar/PycharmProjects/PyTorch/style_transfer/data/images/neural_style/munk.jpg")
+    "./data/images/neural_style/munk.jpg")
 
-content_img = image_loader("/Users/ganievanvar/PycharmProjects/PyTorch/style_transfer/data/images/neural_style"
+content_img = image_loader("./data/images/neural_style"
                            "/dancing.jpg")
 
 print(style_img.size(), content_img.size())
@@ -81,3 +82,5 @@ imshow(output, title='Output Image')
 
 plt.ioff()
 plt.show()
+
+save_image(output, "./data/images/neural_style/output_test.png")

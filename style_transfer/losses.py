@@ -201,7 +201,6 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
 
         optimizer.step(closure)
 
-    # a last correction...
     input_img.data.clamp_(0, 1)
 
     return input_img
