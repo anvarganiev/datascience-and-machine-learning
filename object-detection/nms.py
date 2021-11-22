@@ -33,6 +33,9 @@ def non_max_suppression(bboxes,
     return bboxes_after_nms
 
 if __name__ == '__main__':
+    import cProfile
+    import pstats
+
     test_boxes = [
         [1, 1, 0.5, 0.45, 0.4, 0.5],
         [2, 0.9, 0.5, 0.5, 0.2, 0.4],
@@ -47,6 +50,16 @@ if __name__ == '__main__':
     ]
     bboxes = non_max_suppression(test_boxes, iou_threshold=7/20, prob_threshold=0.2, box_format="midpoint")
     assert (sorted(bboxes) == sorted(c_boxes)), "do not correct"
+
+    with cProfile.Profile() as pr:
+        non_max_suppression(test_boxes, iou_threshold=7 / 20, prob_threshold=0.2, box_format="midpoint")
+
+    stats = pstats.Stats(pr)
+
+    stats.sort_stats(pstats.SortKey.TIME)
+    # stats.print_stats()
+    stats.dump_stats(filename="nms_profiling.prof")
+
 
 
 
